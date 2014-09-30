@@ -1,4 +1,4 @@
-thesis
+Work on my Master's Thesis Idea
 ======
 
-Thesis
+Using machine learning to prevent SQL injection

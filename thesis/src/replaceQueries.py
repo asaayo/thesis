@@ -8,11 +8,13 @@
 #				v 0.11:		Begin work on replacing unsafe queries
 #
 
-
+import sys
+import fileinput
 
 def main():
 	print("The purpose of this file is twofold, to update existing queries to make them safer, and to put them through a filter so unsafe queries can be caught. 'n")
-	print("Enter the file which you would like to modify: ")
+	file = raw_input("Enter the file which you would like to modify: ")
+        print("File: " + file)
 
 if __name__ == '__main__':
 	main()

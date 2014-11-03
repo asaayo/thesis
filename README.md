@@ -1,4 +1,4 @@
 Work on my Master's Thesis Idea
 ======
 
-Using machine learning to prevent SQL injection
+Preventing SQL injection using code inspection, code modification and neural networks

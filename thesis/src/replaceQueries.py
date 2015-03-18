@@ -48,7 +48,7 @@ def main():
             
 #fix_queries is a function designed to fix unsafe queries in php
 #any time a line is detected that contains a SQL command word (INSERT, DELETE, SELECT)
-#it is passed into fix_queries to generated 
+#it is passed into fix_queries
 def fix_queries(toMod):
     #Regular expression to find PHP variables
     pattern = re.compile('\$\w+')
@@ -67,7 +67,7 @@ def fix_queries(toMod):
         if toMod[i.end(0):i.end(0)+2] == "->":
             #have to use stdout to prevent line from breaking and a space from being appended
             sys.stdout.write("$stmt = " + currentWord)
-            #if a string is proceeded by ->, it's probably a 
+            #if a string is followed by ->, it's probably a 
             #mysqli statement, so we don't want to remove it
             toMod=toMod[i.end(0):]
     modded = re.sub('\$\w+','?',toMod)

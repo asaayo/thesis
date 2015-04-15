@@ -17,6 +17,8 @@ import fileinput
 import shutil
 import re
 
+oldstdout = sys.stdout
+
 def main():
     print("The purpose of this file is twofold, to update existing queries to make them safer, and to put them through a filter so unsafe queries can be caught.")
     file = raw_input("Enter the file which you would like to modify: ")
@@ -77,6 +79,7 @@ def fix_queries(toMod):
     
 def build_prepared_statement(toMod):
     
+    global oldstdout
     
     pattern = re.compile('\$\w+')
     iter = pattern.finditer(toMod)
@@ -85,7 +88,10 @@ def build_prepared_statement(toMod):
     sys.stdout.write("$stmt->bind_param(\'")
     #no way to find the length of an iterator without iterating through it
     for i in iter:
-        sys.stdout.write("s")
+        oldstdout.write("Enter parameter type for " + toMod[i.start(0):i.end(0)] + " :")
+        oldstdout.flush()
+        input=raw_input()
+        sys.stdout.write(input)
     
     sys.stdout.write("\'")
     
